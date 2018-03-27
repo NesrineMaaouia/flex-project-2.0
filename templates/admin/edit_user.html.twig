@@ -1,0 +1,89 @@
+{% extends 'layout.html.twig' %}
+
+
+
+{% block content%}
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{{ path('admin_dashboard') }}">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">User informations</li>
+            </ol>
+            <div class="row">
+                <div class="col-12">
+                    <h1>User informations</h1>
+                    <hr/>
+                    {{ form_start(form) }}
+
+                     <div class="row">
+                         <div class="form-group col-md-6">
+                             <span class="label pull-left">Civilité<sup>*</sup> :</span>
+                            <div class="radios-wrapper pull-left">{{ form_widget(form.civility) }}</div>
+                            <span class="error-form"> {{ form_errors(form.civility) }}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            {{ form_widget(form.lastname, {'attr': {'class': 'form-control required', 'placeholder': 'Nom*', 'maxlength': 80}}) }}
+                            {% if form_errors(form.lastname) %}<span class="error-form">{{ form_errors(form.lastname) }}</span>{% endif %}
+                        </div>
+                        <div class="form-group col-md-6">
+                            {{ form_widget(form.firstname, {'attr': {'class': 'form-control required', 'placeholder': 'Prénom*', 'maxlength': 80}}) }}
+                            {% if form_errors(form.firstname) %}<span class="error-form">{{ form_errors(form.firstname) }}</span>{% endif %}
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12">
+                        {{ form_row(form.username, {'attr': {'class': 'form-control required', 'placeholder': 'Username*', 'maxlength': 80}}) }}
+                    </div>
+                    <div class="form-group col-md-12">
+                        {{ form_row(form.password, {'attr': {'class': 'form-control required', 'placeholder': 'Password*', 'maxlength': 80}}) }}
+                    </div>
+                    <div class="form-group col-md-12">
+                        {{ form_row(form.email, {'attr': {'class': 'form-control required', 'placeholder': 'Email*', 'maxlength': 80}}) }}
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Mettre à jour</button>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+        <!-- /.container-fluid-->
+        <!-- /.content-wrapper-->
+        <footer class="sticky-footer">
+            <div class="container">
+                <div class="text-center">
+                    <small>Copyright © Your Website 2018</small>
+                </div>
+            </div>
+        </footer>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fa fa-angle-up"></i>
+        </a>
+
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="login.html">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
